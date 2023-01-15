@@ -26,3 +26,21 @@ function response($response) {
     echo json_encode($response, JSON_UNESCAPED_UNICODE);
     exit();
 }
+
+function patterns_include($name) {
+    echo "<hr>";
+    echo $name."<br>";
+    include "./patterns/".$name.".php";
+    echo "<hr>";
+}
+
+function patterns_include_all($dir) {
+
+    foreach (glob($dir."/*.php") as $filename)
+    {
+        echo "\n<hr>\n";
+        echo $filename."<br>\n";
+        require $filename;
+        echo "\n<hr>\n";
+    }
+}
